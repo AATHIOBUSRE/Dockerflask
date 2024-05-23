@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+</head>
+<body>
+    <h1>Prediction Form</h1>
+    <form id="predictionForm">
+        <label for="sample_type">Select Sample Type:</label>
+        <select name="sample_type" id="sample_type">
+            <option value="blood">Blood</option>
+            <option value="serum">Serum</option>
+            <option value="urine">Urine</option>
+        </select><br><br>
+
+        <label for="parameter">Select Parameter:</label>
+        <select name="parameter" id="parameter">
+            <!-- Options will be populated dynamically using JavaScript -->
+        </select><br><br>
+
+        <label for="input_values">Enter Input Value(s) (comma-separated):</label>
+        <input type="text" name="input_values" id="input_values"><br><br>
+
+        <input type="button" value="Predict" onclick="predict()">
+    </form>
+
+    <div id="predictionResults"></div>
+
+    <script>
+        // JavaScript function to send AJAX request and update prediction results
+        function predict() {
+            var form = document.getElementById("predictionForm");
+            var formData = new FormData(form);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/predict", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("predictionResults").innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.send(new URLSearchParams(formData).toString());
+        }
+
+        // JavaScript function to populate parameters based on sample type selection
+        document.getElementById("sample_type").addEventListener("change", function () {
+            var sampleType = this.value;
+            var parameterSelect = document.getElementById("parameter");
+            parameterSelect.innerHTML = ""; // Clear existing options
+
+            // Define parameters based on sample type
+            var parameters = {
+                "blood": ["ca", "hb", "gl", "hbblood"],
+                "serum": ["totalproteinserum", "glucoseserum", "albuminserum", "calciumserum"],
+                "urine": ["glucoseurine", "albuminurine", "microproteinurine"]
+            };
+
+            // Populate parameter options
+            parameters[sampleType].forEach(function (parameter) {
+                var option = document.createElement("option");
+                option.value = parameter;
+                option.text = parameter;
+                parameterSelect.appendChild(option);
+            });
+        });
+    </script>
+</body>
+</html>
