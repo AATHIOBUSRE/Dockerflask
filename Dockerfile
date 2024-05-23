@@ -48,7 +48,7 @@ RUN mkdir -p /aathi/predictionresult/
 COPY predictionresult/dockerprediction.py ./predictionresult/
 
 # Copy the CSV files from the results directory
-COPY predictionresult/interpolatedca.csv ./predictionresult/
+COPY /interpolatedca.csv ./predictionresult/
 COPY predictionresult/interpolatedHb.csv ./predictionresult/
 COPY predictionresult/interpolatedgl.csv ./predictionresult/
 COPY predictionresult/interpolatedalb.csv ./predictionresult/
