@@ -61,23 +61,23 @@ COPY /interpolatedhbblood.csv ./predictionresult/
 COPY /interpolatedmpu.csv ./predictionresult/
 
 # Copy the model files from the results directory
-COPY predictionresult/RandomForest_ModelCa.joblib ./predictionresult/
-COPY predictionresult/RandomForest_ModelHb.joblib ./predictionresult/
-COPY predictionresult/RandomForest_ModelGl.joblib ./predictionresult/
-COPY predictionresult/RandomForest_Modelalb.joblib ./predictionresult/
-COPY predictionresult/RandomForest_Modelalburine.joblib ./predictionresult/
-COPY predictionresult/RandomForest_Modeltpserum.joblib ./predictionresult/
-COPY predictionresult/RandomForest_Modelcalserum.joblib ./predictionresult/
-COPY predictionresult/RandomForest_ModelGlucserum.joblib ./predictionresult/
-COPY predictionresult/RandomForest_ModelGlucurine.joblib ./predictionresult/
-COPY predictionresult/RandomForest_Modelhbblood.joblib ./predictionresult/
-COPY predictionresult/RandomForest_Modelmpurine.joblib ./predictionresult/
+COPY /RandomForest_ModelCa.joblib ./predictionresult/
+COPY /RandomForest_ModelHb.joblib ./predictionresult/
+COPY /RandomForest_ModelGl.joblib ./predictionresult/
+COPY /RandomForest_Modelalb.joblib ./predictionresult/
+COPY /RandomForest_Modelalburine.joblib ./predictionresult/
+COPY /RandomForest_Modeltpserum.joblib ./predictionresult/
+COPY /RandomForest_Modelcalserum.joblib ./predictionresult/
+COPY /RandomForest_ModelGlucserum.joblib ./predictionresult/
+COPY /RandomForest_ModelGlucurine.joblib ./predictionresult/
+COPY /RandomForest_Modelhbblood.joblib ./predictionresult/
+COPY /RandomForest_Modelmpurine.joblib ./predictionresult/
 
 # Copy the HTML file
-COPY predictionresult/predictionhtml.html ./predictionresult/
+COPY /predictionhtml.html ./predictionresult/
 
 # Expose the container port on which the server will be listening
 EXPOSE 5000
 
 # Launch the server app
-ENTRYPOINT ["python", "./predictionresult/dockerprediction.py"]
+ENTRYPOINT ["python", "./dockerprediction.py"]
