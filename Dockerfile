@@ -35,7 +35,7 @@
 FROM python:3.10.4
 
 # Set the working directory inside the container
-WORKDIR /aathi/
+WORKDIR /aathi/predictionresult/
 
 # Copy the requirements file and install dependencies
 COPY requirements.txt ./
@@ -48,7 +48,7 @@ RUN mkdir -p /aathi/predictionresult/
 COPY predictionresult/dockerprediction.py ./predictionresult/
 
 # Copy the CSV files from the results directory
-COPY /interpolatedca.csv ./predictionresult/
+COPY predictionresult/interpolatedca.csv ./predictionresult/
 COPY predictionresult/interpolatedHb.csv ./predictionresult/
 COPY predictionresult/interpolatedgl.csv ./predictionresult/
 COPY predictionresult/interpolatedalb.csv ./predictionresult/
