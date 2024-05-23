@@ -45,20 +45,20 @@ RUN pip install -r requirements.txt
 RUN mkdir -p /aathi/predictionresult/
 
 # Copy the server code
-COPY predictionresult/dockerprediction.py ./predictionresult/
+COPY /dockerprediction.py ./predictionresult/
 
 # Copy the CSV files from the results directory
-COPY predictionresult/interpolatedca.csv ./predictionresult/
-COPY predictionresult/interpolatedHb.csv ./predictionresult/
-COPY predictionresult/interpolatedgl.csv ./predictionresult/
-COPY predictionresult/interpolatedalb.csv ./predictionresult/
-COPY predictionresult/interpolatedalbu.csv ./predictionresult/
-COPY predictionresult/interpolatedcals.csv ./predictionresult/
-COPY predictionresult/interpolatedGlucser.csv ./predictionresult/
-COPY predictionresult/interpolatedGlucu.csv ./predictionresult/
-COPY predictionresult/interpolatedtpser.csv ./predictionresult/
-COPY predictionresult/interpolatedhbblood.csv ./predictionresult/
-COPY predictionresult/interpolatedmpu.csv ./predictionresult/
+COPY /interpolatedca.csv ./predictionresult/
+COPY /interpolatedHb.csv ./predictionresult/
+COPY /interpolatedgl.csv ./predictionresult/
+COPY /interpolatedalb.csv ./predictionresult/
+COPY /interpolatedalbu.csv ./predictionresult/
+COPY /interpolatedcals.csv ./predictionresult/
+COPY /interpolatedGlucser.csv ./predictionresult/
+COPY /interpolatedGlucu.csv ./predictionresult/
+COPY /interpolatedtpser.csv ./predictionresult/
+COPY /interpolatedhbblood.csv ./predictionresult/
+COPY /interpolatedmpu.csv ./predictionresult/
 
 # Copy the model files from the results directory
 COPY predictionresult/RandomForest_ModelCa.joblib ./predictionresult/
