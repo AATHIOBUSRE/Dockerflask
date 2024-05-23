@@ -7,7 +7,7 @@ from tabulate import tabulate
 app = Flask(__name__)
 
 # Determine the path where the models and CSV files will be located inside the Docker container
-DATA_DIR = "/aathi/predictionresult"
+DATA_DIR = "/aathi/"
 
 # Load the saved models and datasets
 models = {
