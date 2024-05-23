@@ -38,14 +38,39 @@ FROM python:3.10.4
 WORKDIR /aathi/
 
 # Copy the requirements file and install dependencies
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
+COPY requirements.txt /aathi/
+RUN pip install -r ./requirements.txt
 
 # Copy the server code
-COPY . .
+COPY dockerprediction.py /aathi/
 
-# Expose the container port on which the server will be listening
-EXPOSE 5000
+# Copy the CSV files
+COPY interpolatedca.csv /aathi/
+COPY interpolatedHb.csv /aathi/
+COPY interpolatedgl.csv /aathi/
+COPY interpolatedGlucser.csv /aathi/
+COPY interpolatedGlucu.csv /aathi/
+COPY interpolatedalb.csv /aathi/
+COPY interpolatedcals.csv /aathi/
+COPY interpolatedhbblood.csv /aathi/
+COPY interpolatedmpu.csv /aathi/
+COPY interpolatedtpser.csv /aathi/
+COPY interpolatedalbu.csv /aathi/
+
+# Copy the model files
+COPY RandomForest_ModelCa.joblib /aathi/
+COPY RandomForest_ModelHb.joblib /aathi/
+COPY RandomForest_ModelGl.joblib /aathi/
+COPY RandomForest_ModelGlucserum.joblib /aathi/
+COPY RandomForest_ModelGlucurine.joblib /aathi/
+COPY RandomForest_Modelalb.joblib /aathi/
+COPY RandomForest_Modelalburine.joblib /aathi/
+COPY RandomForest_Modelcalserum.joblib /aathi/
+COPY RandomForest_Modelhbblood.joblib /aathi/
+COPY RandomForest_Modelmpurine.joblib /aathi/
+COPY RandomForest_Modeltpserum.joblib /aathi/
+
+COPY predictionhtml.html /aathi/
 
 # Launch the server app
 ENTRYPOINT ["python", "./dockerprediction.py"]
