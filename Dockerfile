@@ -45,7 +45,7 @@ RUN pip install -r requirements.txt
 RUN mkdir -p /aathi/
 
 # Copy the server code
-COPY /dockerprediction.py 
+COPY /dockerprediction.py ./
 
 # Copy the CSV files from the results directory
 COPY /interpolatedca.csv ./
