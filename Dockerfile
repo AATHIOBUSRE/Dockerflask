@@ -80,4 +80,4 @@ COPY /predictionhtml.html ./predictionresult/
 EXPOSE 5000
 
 # Launch the server app
-ENTRYPOINT ["python", "./dockerprediction.py"]
+ENTRYPOINT ["python", "/dockerprediction.py"]
