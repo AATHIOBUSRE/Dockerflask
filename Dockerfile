@@ -42,35 +42,7 @@ COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
 # Copy the server code
-COPY /dockerprediction.py ./
-
-# Copy the CSV files from the results directory
-COPY /interpolatedca.csv ./
-COPY /interpolatedHb.csv ./
-COPY /interpolatedgl.csv ./
-COPY /interpolatedalb.csv ./
-COPY /interpolatedalbu.csv ./
-COPY /interpolatedcals.csv ./
-COPY /interpolatedGlucser.csv ./ 
-COPY /interpolatedGlucu.csv ./
-COPY /interpolatedtpser.csv ./
-COPY /interpolatedhbblood.csv ./
-COPY /interpolatedmpu.csv 
-# Copy the model files from the results directory
-COPY /RandomForest_ModelCa.joblib  ./
-COPY /RandomForest_ModelHb.joblib ./
-COPY /RandomForest_ModelGl.joblib  ./
-COPY /RandomForest_Modelalb.joblib ./
-COPY /RandomForest_Modelalburine.joblib ./
-COPY /RandomForest_Modeltpserum.joblib ./
-COPY /RandomForest_Modelcalserum.joblib ./
-COPY /RandomForest_ModelGlucserum.joblib ./
-COPY /RandomForest_ModelGlucurine.joblib ./
-COPY /RandomForest_Modelhbblood.joblib ./
-COPY /RandomForest_Modelmpurine.joblib ./
-
-# Copy the HTML file
-COPY /predictionhtml.html ./
+COPY . .
 
 # Expose the container port on which the server will be listening
 EXPOSE 5000
