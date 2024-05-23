@@ -35,14 +35,11 @@
 FROM python:3.10.4
 
 # Set the working directory inside the container
-WORKDIR /aathi/predictionresult/
+WORKDIR /aathi/
 
 # Copy the requirements file and install dependencies
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
-
-# Create a directory for the results
-RUN mkdir -p /aathi/
 
 # Copy the server code
 COPY /dockerprediction.py ./
@@ -79,4 +76,4 @@ COPY /predictionhtml.html ./
 EXPOSE 5000
 
 # Launch the server app
-ENTRYPOINT ["python", "/dockerprediction.py"]
+ENTRYPOINT ["python", "./dockerprediction.py"]
